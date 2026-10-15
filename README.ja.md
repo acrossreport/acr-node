@@ -34,8 +34,8 @@ const pageCount = renderPdf(templateJson, dataJson, "invoice.pdf");
 npm install @acrossreport/acr-node
 ```
 
-**Windows x64**・**Linux x64（glibc）**・**macOS（Apple Silicon）**・**macOS（Intel）**で
-ビルド済みです（下記[対応プラットフォーム](#対応プラットフォーム)参照）。
+**Windows x64**・**Windows ARM64**・**Linux x64（glibc）**・**macOS（Apple Silicon）**・
+**macOS（Intel）**でビルド済みです（下記[対応プラットフォーム](#対応プラットフォーム)参照）。
 
 ## 使い方
 
@@ -89,6 +89,7 @@ console.log(licenseStatus()); // { licensed: true, tier: "..." }
 | プラットフォーム | 状況 |
 |----------|--------|
 | Windows x64 | 対応済み |
+| Windows ARM64 | 対応済み |
 | Linux x64（glibc） | 対応済み |
 | macOS（Apple Silicon） | 対応済み |
 | macOS（Intel） | 対応済み |
