@@ -1,6 +1,6 @@
 {
   "name": "@acrossreport/acr-node",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Render ACR (Across Report) templates to PDF/PNG directly from Node.js and Electron, powered by the Rust ACR engine (Skia-based, pixel-accurate).",
   "main": "index.js",
   "types": "index.d.ts",
@@ -14,7 +14,8 @@
     "LICENSE.txt"
   ],
   "os": [
-    "win32"
+    "win32",
+    "linux"
   ],
   "cpu": [
     "x64"
