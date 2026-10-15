@@ -40,9 +40,9 @@ const pageCount = renderPdf(templateJson, dataJson, "invoice.pdf");
 npm install @acrossreport/acr-node
 ```
 
-Précompilé pour **Windows x64**, **Windows ARM64**, **Linux x64 (glibc)**,
-**macOS (Apple Silicon)** et **macOS (Intel)** — voir
-[Plateformes prises en charge](#plateformes-prises-en-charge) ci-dessous.
+Précompilé pour les six principales combinaisons plateforme/architecture :
+**Windows x64/ARM64**, **Linux x64/ARM64 (glibc)**, et **macOS (Apple Silicon/Intel)**
+— voir [Plateformes prises en charge](#plateformes-prises-en-charge) ci-dessous.
 
 ## Utilisation
 
@@ -99,9 +99,9 @@ avec ACR CLI / ACR Designer / ACR Viewer sur la même machine.
 | Windows x64 | Disponible |
 | Windows ARM64 | Disponible |
 | Linux x64 (glibc) | Disponible |
+| Linux ARM64 (glibc) | Disponible |
 | macOS (Apple Silicon) | Disponible |
 | macOS (Intel) | Disponible |
-| Linux ARM64 | Prévu |
 
 ## Licence
 
