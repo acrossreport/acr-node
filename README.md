@@ -40,41 +40,35 @@ Prebuilt for all six major platform/architecture combinations: **Windows x64/ARM
 
 ## Usage
 
-Try it right away with a real template + data pair from
-[acr-samples](https://github.com/acrossreport/acr-samples):
+Quickstart — renders a real sample from
+[acr-samples](https://github.com/acrossreport/acr-samples) to a PDF:
 
 ```bash
 curl -LO https://github.com/acrossreport/acr-samples/raw/main/acr-slip-list-en.zip
 unzip acr-slip-list-en.zip
 ```
 
-```ts
-import { renderPreview, renderPdf, renderPngZip, listDataFields, licenseStatus, activate } from "@acrossreport/acr-node";
+```js
 import { readFileSync } from "node:fs";
+import { renderPdf } from "@acrossreport/acr-node";
 
-const templateJson = readFileSync("acr-slip-list-en.template.json", "utf8");
-const dataJson = readFileSync("acr-slip-list-en.data.json", "utf8");
+const template = readFileSync("acr-slip-list-en.template.json", "utf8"); // made in ACR Designer
+const data = readFileSync("acr-slip-list-en.data.json", "utf8");         // shape below
 
-// On-screen preview: one PNG (Buffer) per page, 96dpi.
-const pages = renderPreview(templateJson, dataJson);
-console.log(pages.length, pages[0].widthPx, pages[0].heightPx, pages[0].png.length);
-
-// PDF file, 72dpi. Returns the page count.
-const pageCount = renderPdf(templateJson, dataJson, "acr-slip-list-en.pdf");
-console.log(pageCount); // 1394
-
-// ACR-PNG-PACKAGE ZIP (manifest.json + pages/001.png, ...), 96dpi.
-renderPngZip(templateJson, dataJson, "acr-slip-list-en.zip", "0.1.0");
-
-// Inspect which DataField names a template expects, and where each is used.
-console.log(JSON.parse(listDataFields(templateJson)));
+const pageCount = renderPdf(template, data, "slip-list.pdf");
+console.log(`slip-list.pdf created (${pageCount} pages)`); // 1394
 ```
 
-Using your own template instead? Swap in its `.template.json` / `.data.json` paths —
-the calls above don't depend on the sample's content or page count.
+Data JSON shape: `{"Parameters":{"Data":[{column: value, ...}, ...]}}` (an empty
+string is treated as no rows). Use `listDataFields(template)` to see which column
+names a given template expects.
 
-`dataJson` may be an empty string, which is treated as no rows
-(`{"Parameters":{"Data":[]}}`).
+Using your own template instead? Swap in its `.template.json` / `.data.json` paths —
+nothing else changes.
+
+More examples — serving PDFs over HTTP with worker-thread concurrency so rendering
+doesn't block other requests, and a typed version exercising `renderPreview` (PNG per
+page), `renderPngZip`, and `listDataFields` — are in [examples/](examples/).
 
 ### Licensing
 

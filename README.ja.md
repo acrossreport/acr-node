@@ -41,40 +41,32 @@ npm install @acrossreport/acr-node
 ## 使い方
 
 まずは[acr-samples](https://github.com/acrossreport/acr-samples)にある実在のテンプレート・
-データのペアでそのまま試せます。
+データのペアでPDFを作ってみます。
 
 ```bash
 curl -LO https://github.com/acrossreport/acr-samples/raw/main/acr-slip-list-ja.zip
 unzip acr-slip-list-ja.zip
 ```
 
-```ts
-import { renderPreview, renderPdf, renderPngZip, listDataFields, licenseStatus, activate } from "@acrossreport/acr-node";
+```js
 import { readFileSync } from "node:fs";
+import { renderPdf } from "@acrossreport/acr-node";
 
-const templateJson = readFileSync("acr-slip-list-ja.template.json", "utf8");
-const dataJson = readFileSync("acr-slip-list-ja.data.json", "utf8");
+const template = readFileSync("acr-slip-list-ja.template.json", "utf8"); // ACR Designerで作成
+const data = readFileSync("acr-slip-list-ja.data.json", "utf8");         // 形は下記参照
 
-// 画面プレビュー: ページごとにPNG(Buffer)、96dpi。
-const pages = renderPreview(templateJson, dataJson);
-console.log(pages.length, pages[0].widthPx, pages[0].heightPx, pages[0].png.length);
-
-// PDFファイル、72dpi。戻り値はページ数。
-const pageCount = renderPdf(templateJson, dataJson, "acr-slip-list-ja.pdf");
-console.log(pageCount); // 1394
-
-// ACR-PNG-PACKAGE形式のZIP（manifest.json + pages/001.png, ...）、96dpi。
-renderPngZip(templateJson, dataJson, "acr-slip-list-ja.zip", "0.1.0");
-
-// テンプレートが期待するDataField名と使用箇所の一覧を取得。
-console.log(JSON.parse(listDataFields(templateJson)));
+const pageCount = renderPdf(template, data, "slip-list.pdf");
+console.log(`slip-list.pdf を作成しました（${pageCount} ページ）`); // 1394
 ```
 
-自分のテンプレートで試す場合は、`.template.json` / `.data.json`のパスを差し替えるだけで
-OKです。上記の呼び出し自体はサンプルの内容やページ数に依存しません。
+データJSONの形: `{"Parameters":{"Data":[{列名: 値, ...}, ...]}}`（空文字の場合は行なし扱い）。
+テンプレートが必要とする列名は`listDataFields(template)`で確認できます。
 
-`dataJson`は空文字でもよく、その場合は行なし（`{"Parameters":{"Data":[]}}`）として
-扱われます。
+自分のテンプレートで試す場合は、`.template.json` / `.data.json`のパスを差し替えるだけでOKです。
+
+Webサーバからの配信(ワーカースレッドで同時描画)、`renderPreview`(ページごとのPNG)・
+`renderPngZip`・`listDataFields`を使う型付き(TypeScript)の例は[examples/](examples/)
+にあります。
 
 ### ライセンス
 

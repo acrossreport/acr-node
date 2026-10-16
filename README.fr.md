@@ -46,7 +46,7 @@ Précompilé pour les six principales combinaisons plateforme/architecture :
 
 ## Utilisation
 
-Essayez-le tout de suite avec un modèle + des données réels tirés de
+Démarrage rapide — génère un PDF à partir d'un exemple réel tiré de
 [acr-samples](https://github.com/acrossreport/acr-samples) :
 
 ```bash
@@ -54,33 +54,27 @@ curl -LO https://github.com/acrossreport/acr-samples/raw/main/acr-slip-list-en.z
 unzip acr-slip-list-en.zip
 ```
 
-```ts
-import { renderPreview, renderPdf, renderPngZip, listDataFields, licenseStatus, activate } from "@acrossreport/acr-node";
+```js
 import { readFileSync } from "node:fs";
+import { renderPdf } from "@acrossreport/acr-node";
 
-const templateJson = readFileSync("acr-slip-list-en.template.json", "utf8");
-const dataJson = readFileSync("acr-slip-list-en.data.json", "utf8");
+const template = readFileSync("acr-slip-list-en.template.json", "utf8"); // créé avec ACR Designer
+const data = readFileSync("acr-slip-list-en.data.json", "utf8");         // forme ci-dessous
 
-// Aperçu à l'écran : un PNG (Buffer) par page, 96dpi.
-const pages = renderPreview(templateJson, dataJson);
-console.log(pages.length, pages[0].widthPx, pages[0].heightPx, pages[0].png.length);
-
-// Fichier PDF, 72dpi. Retourne le nombre de pages.
-const pageCount = renderPdf(templateJson, dataJson, "acr-slip-list-en.pdf");
-console.log(pageCount); // 1394
-
-// ZIP au format ACR-PNG-PACKAGE (manifest.json + pages/001.png, ...), 96dpi.
-renderPngZip(templateJson, dataJson, "acr-slip-list-en.zip", "0.1.0");
-
-// Inspecter les noms de DataField attendus par un modèle, et où chacun est utilisé.
-console.log(JSON.parse(listDataFields(templateJson)));
+const pageCount = renderPdf(template, data, "slip-list.pdf");
+console.log(`slip-list.pdf créé (${pageCount} pages)`); // 1394
 ```
 
-Pour utiliser votre propre modèle, remplacez simplement les chemins `.template.json` /
-`.data.json` — les appels ci-dessus ne dépendent pas du contenu de l'exemple.
+Forme du JSON de données : `{"Parameters":{"Data":[{colonne: valeur, ...}, ...]}}`
+(une chaîne vide est traitée comme aucune ligne). Utilisez `listDataFields(template)`
+pour voir les noms de colonnes attendus par un modèle donné.
 
-`dataJson` peut être une chaîne vide, traitée comme aucune ligne
-(`{"Parameters":{"Data":[]}}`).
+Pour utiliser votre propre modèle, remplacez simplement les chemins `.template.json` /
+`.data.json` — rien d'autre ne change.
+
+D'autres exemples — servir des PDF via HTTP avec un rendu concurrent dans des worker
+threads, et une version typée utilisant `renderPreview` (un PNG par page),
+`renderPngZip` et `listDataFields` — se trouvent dans [examples/](examples/).
 
 ### Licence
 
