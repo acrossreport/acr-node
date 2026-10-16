@@ -41,11 +41,16 @@ npm install @acrossreport/acr-node
 ## 使い方
 
 まずは[acr-samples](https://github.com/acrossreport/acr-samples)にある実在のテンプレート・
-データのペアでPDFを作ってみます。
+データのペアでPDFを作ってみます。空の作業用フォルダを作って移動してから実行してください
+(前述の`npm install`はこのフォルダで改めて実行し直す必要があります):
 
 ```bash
+mkdir acr-node-demo
+cd acr-node-demo
+npm init -y
+npm install @acrossreport/acr-node
 curl -LO https://github.com/acrossreport/acr-samples/raw/main/acr-slip-list-ja.zip
-unzip acr-slip-list-ja.zip
+tar -xf acr-slip-list-ja.zip
 ```
 
 ```js

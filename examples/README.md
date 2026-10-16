@@ -8,11 +8,21 @@ run them all in sequence. All of them render a sample purchase-slip-list report
 
 ## Setup (once, for any example below)
 
+First create an empty working folder and move into it — the commands below extract
+files into whatever folder you're in:
+
 ```bash
+mkdir acr-node-examples
+cd acr-node-examples
+npm init -y
 npm install @acrossreport/acr-node
 curl -LO https://github.com/acrossreport/acr-samples/raw/main/acr-slip-list-ja.zip
-unzip acr-slip-list-ja.zip
+tar -xf acr-slip-list-ja.zip
 ```
+
+(`npm init -y` creates a `package.json` for this folder, so `npm install` always installs into
+*this* folder's `node_modules`. Without it, if a `package.json` exists in a parent folder, npm
+may install there instead.)
 
 This gives you `acr-slip-list-ja.template.json` and `acr-slip-list-ja.data.json` in
 the current folder — every example below expects them there. The data JSON has the
@@ -25,8 +35,12 @@ given template expects.
 The shortest possible example: template + data in, one PDF out.
 
 ```bash
-node 01-quickstart.mjs             # all 12,982 rows -> 1,394 pages
-LIMIT=50 node 01-quickstart.mjs    # try with the first 50 rows only
+node 01-quickstart.mjs                   # all 12,982 rows -> 1,394 pages
+LIMIT=50 node 01-quickstart.mjs          # try with the first 50 rows only (macOS/Linux/Git Bash)
+```
+
+```powershell
+$env:LIMIT=50; node 01-quickstart.mjs    # same, Windows PowerShell
 ```
 
 ## 02-server.mjs (+ render-worker.mjs)
@@ -54,8 +68,13 @@ through [tsx](https://github.com/privatenumber/tsx) instead:
 node 03-typescript.ts                        # Node 22.18+/23.6+
 npx tsx 03-typescript.ts                     # older Node
 
-LIMIT=100 PREVIEW_PAGES=all node 03-typescript.ts   # save every page as PNG
-ZIP=1 node 03-typescript.ts                         # also write an ACR-PNG-PACKAGE zip
+LIMIT=100 PREVIEW_PAGES=all node 03-typescript.ts   # save every page as PNG (macOS/Linux/Git Bash)
+ZIP=1 node 03-typescript.ts                         # also write an ACR-PNG-PACKAGE zip (same)
+```
+
+```powershell
+$env:LIMIT=100; $env:PREVIEW_PAGES="all"; node 03-typescript.ts   # save every page as PNG (Windows PowerShell)
+$env:ZIP=1; node 03-typescript.ts                                  # also write an ACR-PNG-PACKAGE zip (same)
 ```
 
 ## Licensing

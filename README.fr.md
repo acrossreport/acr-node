@@ -47,11 +47,16 @@ Précompilé pour les six principales combinaisons plateforme/architecture :
 ## Utilisation
 
 Démarrage rapide — génère un PDF à partir d'un exemple réel tiré de
-[acr-samples](https://github.com/acrossreport/acr-samples) :
+[acr-samples](https://github.com/acrossreport/acr-samples). Créez d'abord un dossier
+de travail vide et placez-vous-y (il faudra refaire `npm install` ici aussi) :
 
 ```bash
+mkdir acr-node-demo
+cd acr-node-demo
+npm init -y
+npm install @acrossreport/acr-node
 curl -LO https://github.com/acrossreport/acr-samples/raw/main/acr-slip-list-en.zip
-unzip acr-slip-list-en.zip
+tar -xf acr-slip-list-en.zip
 ```
 
 ```js

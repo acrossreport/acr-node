@@ -6,11 +6,18 @@
 
 ## 準備(どのサンプルを動かす場合も最初に1回)
 
+まず空の作業用フォルダを作り、そこに移動します(以下のコマンドはこのフォルダにファイルを展開します):
+
 ```bash
+mkdir acr-node-examples
+cd acr-node-examples
+npm init -y
 npm install @acrossreport/acr-node
 curl -LO https://github.com/acrossreport/acr-samples/raw/main/acr-slip-list-ja.zip
-unzip acr-slip-list-ja.zip
+tar -xf acr-slip-list-ja.zip
 ```
+
+(`npm init -y` でこのフォルダ用の `package.json` を作っておくと、`npm install` が必ずこのフォルダの `node_modules` に入ります。これがないと、上位フォルダに別の `package.json` があった場合、そちらにインストールされてしまうことがあります。)
 
 これで `acr-slip-list-ja.template.json` と `acr-slip-list-ja.data.json` がカレントフォルダに展開されます。以下のサンプルはすべて、この2ファイルが同じフォルダにあることを前提にしています。データJSONの形は `{"Parameters":{"Data":[{列名: 値, ...}, ...]}}` です。テンプレートが必要とする列名は `listDataFields(template)` (`03-typescript.ts` で使用例あり) で確認できます。
 
@@ -19,8 +26,12 @@ unzip acr-slip-list-ja.zip
 最短の例:テンプレート+データを渡してPDFを1つ作るだけです。
 
 ```bash
-node 01-quickstart.mjs             # 全件 12,982 行 → 1,394 ページ
-LIMIT=50 node 01-quickstart.mjs    # 先頭 50 行だけで試す
+node 01-quickstart.mjs                   # 全件 12,982 行 → 1,394 ページ
+LIMIT=50 node 01-quickstart.mjs          # 先頭 50 行だけで試す（macOS/Linux/Git Bash）
+```
+
+```powershell
+$env:LIMIT=50; node 01-quickstart.mjs    # 同上（Windows PowerShell）
 ```
 
 ## 02-server.mjs (+ render-worker.mjs)
@@ -43,8 +54,13 @@ curl http://localhost:3000/health     # 描画中でもすぐ返る
 node 03-typescript.ts                        # Node 22.18+/23.6+
 npx tsx 03-typescript.ts                     # 古いNode
 
-LIMIT=100 PREVIEW_PAGES=all node 03-typescript.ts   # 全ページをPNGとして保存
-ZIP=1 node 03-typescript.ts                         # ACR-PNG-PACKAGE形式のzipも作成
+LIMIT=100 PREVIEW_PAGES=all node 03-typescript.ts   # 全ページをPNGとして保存（macOS/Linux/Git Bash）
+ZIP=1 node 03-typescript.ts                         # ACR-PNG-PACKAGE形式のzipも作成（同上）
+```
+
+```powershell
+$env:LIMIT=100; $env:PREVIEW_PAGES="all"; node 03-typescript.ts   # 全ページをPNGとして保存（Windows PowerShell）
+$env:ZIP=1; node 03-typescript.ts                                  # ACR-PNG-PACKAGE形式のzipも作成（同上）
 ```
 
 ## ライセンス

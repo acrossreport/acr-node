@@ -41,11 +41,16 @@ Prebuilt for all six major platform/architecture combinations: **Windows x64/ARM
 ## Usage
 
 Quickstart — renders a real sample from
-[acr-samples](https://github.com/acrossreport/acr-samples) to a PDF:
+[acr-samples](https://github.com/acrossreport/acr-samples) to a PDF. Create an empty
+working folder and move into it first (you'll need to re-run `npm install` here too):
 
 ```bash
+mkdir acr-node-demo
+cd acr-node-demo
+npm init -y
+npm install @acrossreport/acr-node
 curl -LO https://github.com/acrossreport/acr-samples/raw/main/acr-slip-list-en.zip
-unzip acr-slip-list-en.zip
+tar -xf acr-slip-list-en.zip
 ```
 
 ```js

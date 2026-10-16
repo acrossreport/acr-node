@@ -3,7 +3,8 @@
 //   準備: npm install @acrossreport/acr-node
 //         acr-samples の acr-slip-list-ja.zip を展開し、このファイルと同じフォルダに置く
 //   実行: node 01-quickstart.mjs            （全件 12,982 行 → 1,394 ページ）
-//         LIMIT=50 node 01-quickstart.mjs   （先頭 50 行だけで試す）
+//         LIMIT=50 node 01-quickstart.mjs   （先頭 50 行だけで試す。macOS/Linux/Git Bash）
+//         $env:LIMIT=50; node 01-quickstart.mjs   （同上。Windows PowerShell）
 import { readFileSync } from "node:fs";
 import { renderPdf, licenseStatus } from "@acrossreport/acr-node";
 
