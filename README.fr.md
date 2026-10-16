@@ -46,26 +46,38 @@ Précompilé pour les six principales combinaisons plateforme/architecture :
 
 ## Utilisation
 
+Essayez-le tout de suite avec un modèle + des données réels tirés de
+[acr-samples](https://github.com/acrossreport/acr-samples) :
+
+```bash
+curl -LO https://github.com/acrossreport/acr-samples/raw/main/acr-slip-list-en.zip
+unzip acr-slip-list-en.zip
+```
+
 ```ts
 import { renderPreview, renderPdf, renderPngZip, listDataFields, licenseStatus, activate } from "@acrossreport/acr-node";
 import { readFileSync } from "node:fs";
 
-const templateJson = readFileSync("invoice.template.json", "utf8");
-const dataJson = readFileSync("invoice.data.json", "utf8");
+const templateJson = readFileSync("acr-slip-list-en.template.json", "utf8");
+const dataJson = readFileSync("acr-slip-list-en.data.json", "utf8");
 
 // Aperçu à l'écran : un PNG (Buffer) par page, 96dpi.
 const pages = renderPreview(templateJson, dataJson);
 console.log(pages.length, pages[0].widthPx, pages[0].heightPx, pages[0].png.length);
 
 // Fichier PDF, 72dpi. Retourne le nombre de pages.
-const pageCount = renderPdf(templateJson, dataJson, "invoice.pdf");
+const pageCount = renderPdf(templateJson, dataJson, "acr-slip-list-en.pdf");
+console.log(pageCount); // 1394
 
 // ZIP au format ACR-PNG-PACKAGE (manifest.json + pages/001.png, ...), 96dpi.
-renderPngZip(templateJson, dataJson, "invoice.zip", "0.1.0");
+renderPngZip(templateJson, dataJson, "acr-slip-list-en.zip", "0.1.0");
 
 // Inspecter les noms de DataField attendus par un modèle, et où chacun est utilisé.
 console.log(JSON.parse(listDataFields(templateJson)));
 ```
+
+Pour utiliser votre propre modèle, remplacez simplement les chemins `.template.json` /
+`.data.json` — les appels ci-dessus ne dépendent pas du contenu de l'exemple.
 
 `dataJson` peut être une chaîne vide, traitée comme aucune ligne
 (`{"Parameters":{"Data":[]}}`).

@@ -40,26 +40,38 @@ npm install @acrossreport/acr-node
 
 ## 使い方
 
+まずは[acr-samples](https://github.com/acrossreport/acr-samples)にある実在のテンプレート・
+データのペアでそのまま試せます。
+
+```bash
+curl -LO https://github.com/acrossreport/acr-samples/raw/main/acr-slip-list-ja.zip
+unzip acr-slip-list-ja.zip
+```
+
 ```ts
 import { renderPreview, renderPdf, renderPngZip, listDataFields, licenseStatus, activate } from "@acrossreport/acr-node";
 import { readFileSync } from "node:fs";
 
-const templateJson = readFileSync("invoice.template.json", "utf8");
-const dataJson = readFileSync("invoice.data.json", "utf8");
+const templateJson = readFileSync("acr-slip-list-ja.template.json", "utf8");
+const dataJson = readFileSync("acr-slip-list-ja.data.json", "utf8");
 
 // 画面プレビュー: ページごとにPNG(Buffer)、96dpi。
 const pages = renderPreview(templateJson, dataJson);
 console.log(pages.length, pages[0].widthPx, pages[0].heightPx, pages[0].png.length);
 
 // PDFファイル、72dpi。戻り値はページ数。
-const pageCount = renderPdf(templateJson, dataJson, "invoice.pdf");
+const pageCount = renderPdf(templateJson, dataJson, "acr-slip-list-ja.pdf");
+console.log(pageCount); // 1394
 
 // ACR-PNG-PACKAGE形式のZIP（manifest.json + pages/001.png, ...）、96dpi。
-renderPngZip(templateJson, dataJson, "invoice.zip", "0.1.0");
+renderPngZip(templateJson, dataJson, "acr-slip-list-ja.zip", "0.1.0");
 
 // テンプレートが期待するDataField名と使用箇所の一覧を取得。
 console.log(JSON.parse(listDataFields(templateJson)));
 ```
+
+自分のテンプレートで試す場合は、`.template.json` / `.data.json`のパスを差し替えるだけで
+OKです。上記の呼び出し自体はサンプルの内容やページ数に依存しません。
 
 `dataJson`は空文字でもよく、その場合は行なし（`{"Parameters":{"Data":[]}}`）として
 扱われます。
