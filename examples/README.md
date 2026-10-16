@@ -77,6 +77,18 @@ $env:LIMIT=100; $env:PREVIEW_PAGES="all"; node 03-typescript.ts   # save every p
 $env:ZIP=1; node 03-typescript.ts                                  # also write an ACR-PNG-PACKAGE zip (same)
 ```
 
+## open-in-viewer.mjs — open a rendered ZIP in the viewer
+
+Opens the `slip-list.zip` (ACR-PNG-PACKAGE) produced with `ZIP=1` directly in the
+[ACR PNG Viewer](https://github.com/acrossreport/acr-viewer), no drag & drop needed.
+Starts a tiny local server and opens your default browser
+(`acr-zip-viewer.html` is extracted alongside `acr-slip-list-ja.zip` in the setup step).
+
+```bash
+node open-in-viewer.mjs                # opens slip-list.zip
+node open-in-viewer.mjs other-name.zip  # opens a differently-named zip
+```
+
 ## Licensing
 
 All three examples work without a license key — output just carries a watermark.
