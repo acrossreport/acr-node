@@ -18,6 +18,7 @@ if (!templateFile) {
   process.exit(1);
 }
 const dataFile = templateFile.replace(".template.json", ".data.json");
+const sampleLang = templateFile.match(/^acr-slip-list-(\w+)\.template\.json$/)[1]; // en / ja / ...
 
 const template = readFileSync(templateFile, "utf8");
 const data = readFileSync(dataFile, "utf8");
@@ -45,7 +46,7 @@ const server = createServer(async (req, res) => {
 // anything else already listening (e.g. a previous run you forgot to close).
 server.listen(Number(process.env.PORT) || 0, "127.0.0.1", () => {
   const port = server.address().port;
-  const url = `http://localhost:${port}/acr-zip-viewer.html?zip=slip-list.zip`;
+  const url = `http://localhost:${port}/acr-zip-viewer.html?zip=slip-list.zip&lang=${sampleLang}`;
   const opener = process.platform === "win32" ? "start \"\"" : process.platform === "darwin" ? "open" : "xdg-open";
   exec(`${opener} "${url}"`, { shell: true });
   console.log(`opened ${url}`);
