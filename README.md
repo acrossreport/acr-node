@@ -40,6 +40,20 @@ Prebuilt for all six major platform/architecture combinations: **Windows x64/ARM
 
 ## Usage
 
+### Try it in one command (Windows)
+
+Paste this into PowerShell — it creates a working folder, installs the package,
+downloads a sample, renders a PDF + ZIP, and opens the result in your browser:
+
+```powershell
+irm https://raw.githubusercontent.com/acrossreport/acr-node/main/examples/setup-and-run-en.ps1 | iex
+```
+
+(That uses the English sample shown below. For the Japanese one, use
+`setup-and-run.ps1` instead.)
+
+### Step by step
+
 Quickstart — renders a real sample from
 [acr-samples](https://github.com/acrossreport/acr-samples) to a PDF. Create an empty
 working folder and move into it first (you'll need to re-run `npm install` here too):

@@ -46,6 +46,21 @@ Précompilé pour les six principales combinaisons plateforme/architecture :
 
 ## Utilisation
 
+### Essayer en une commande (Windows)
+
+Collez ceci dans PowerShell — ça crée un dossier de travail, installe le paquet,
+télécharge un exemple, génère un PDF + un ZIP, et ouvre le résultat dans votre
+navigateur :
+
+```powershell
+irm https://raw.githubusercontent.com/acrossreport/acr-node/main/examples/setup-and-run-en.ps1 | iex
+```
+
+(Utilise l'exemple anglais ci-dessous. Pour l'exemple japonais, utilisez
+`setup-and-run.ps1`.)
+
+### Étape par étape
+
 Démarrage rapide — génère un PDF à partir d'un exemple réel tiré de
 [acr-samples](https://github.com/acrossreport/acr-samples). Créez d'abord un dossier
 de travail vide et placez-vous-y (il faudra refaire `npm install` ici aussi) :

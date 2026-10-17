@@ -6,6 +6,16 @@ Each example is self-contained and runs on its own — pick the one you need, do
 run them all in sequence. All of them render a sample purchase-slip-list report
 (12,982 rows / 1,394 pages) from [acr-samples](https://github.com/acrossreport/acr-samples).
 
+## Just want to try it in one command? (Windows)
+
+```powershell
+irm https://raw.githubusercontent.com/acrossreport/acr-node/main/examples/setup-and-run-en.ps1 | iex
+```
+
+Does setup, renders the PDF + ZIP, and opens a preview in your browser, all in one go.
+It's just [setup-and-run-en.ps1](setup-and-run-en.ps1), which is the same as the setup
+below plus `quickstart-all.mjs`. (For the Japanese sample, use `setup-and-run.ps1`.)
+
 ## Setup (once, for any example below)
 
 First create an empty working folder and move into it — the commands below extract
@@ -77,12 +87,21 @@ $env:LIMIT=100; $env:PREVIEW_PAGES="all"; node 03-typescript.ts   # save every p
 $env:ZIP=1; node 03-typescript.ts                                  # also write an ACR-PNG-PACKAGE zip (same)
 ```
 
-## open-in-viewer.mjs — open a rendered ZIP in the viewer
+## quickstart-all.mjs — PDF + ZIP + viewer, in one command
 
-Opens the `slip-list.zip` (ACR-PNG-PACKAGE) produced with `ZIP=1` directly in the
-[ACR PNG Viewer](https://github.com/acrossreport/acr-viewer), no drag & drop needed.
-Starts a tiny local server and opens your default browser
-(`acr-zip-viewer.html` is extracted alongside `acr-slip-list-ja.zip` in the setup step).
+Auto-detects whichever `acr-slip-list-en.*` / `acr-slip-list-ja.*` pair is in the
+folder, renders both the PDF and the ZIP (ACR-PNG-PACKAGE), then serves the folder
+and opens your browser straight to the result, no drag & drop needed. If you've
+done the setup above, this is all you need:
+
+```bash
+node quickstart-all.mjs
+```
+
+## open-in-viewer.mjs — open a ZIP you already have in the viewer
+
+For when you already have a `slip-list.zip` and just want to view it (use
+`quickstart-all.mjs` instead if you want to render + view in one step).
 
 ```bash
 node open-in-viewer.mjs                # opens slip-list.zip

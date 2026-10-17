@@ -40,6 +40,19 @@ npm install @acrossreport/acr-node
 
 ## 使い方
 
+### ワンコマンドで試す(Windows)
+
+PowerShellにこれだけ貼り付ければ、作業用フォルダの作成からインストール、サンプルデータの
+取得、PDF・ZIP生成、ブラウザでのプレビュー表示まで一気に試せます:
+
+```powershell
+irm https://raw.githubusercontent.com/acrossreport/acr-node/main/examples/setup-and-run.ps1 | iex
+```
+
+(英語サンプルで試したい場合は`setup-and-run.ps1`を`setup-and-run-en.ps1`に置き換えてください。)
+
+### 手順を1つずつ
+
 まずは[acr-samples](https://github.com/acrossreport/acr-samples)にある実在のテンプレート・
 データのペアでPDFを作ってみます。空の作業用フォルダを作って移動してから実行してください
 (前述の`npm install`はこのフォルダで改めて実行し直す必要があります):

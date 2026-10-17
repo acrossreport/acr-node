@@ -4,6 +4,16 @@
 
 各サンプルはそれぞれ単独で動作します — 必要なものを1つ選んで実行してください(順番に全部実行する必要はありません)。いずれも[acr-samples](https://github.com/acrossreport/acr-samples)の仕入伝票一覧サンプル(12,982行 / 1,394ページ)を描画します。
 
+## とにかく1コマンドで試したい場合(Windows)
+
+```powershell
+irm https://raw.githubusercontent.com/acrossreport/acr-node/main/examples/setup-and-run.ps1 | iex
+```
+
+準備からPDF・ZIP生成、ブラウザでのプレビュー表示まで全部やります。中身は
+[setup-and-run.ps1](setup-and-run.ps1)で、以下の「準備」+`quickstart-all.mjs`と同じです。
+(英語サンプルなら`setup-and-run-en.ps1`。)
+
 ## 準備(どのサンプルを動かす場合も最初に1回)
 
 まず空の作業用フォルダを作り、そこに移動します(以下のコマンドはこのフォルダにファイルを展開します):
@@ -63,12 +73,20 @@ $env:LIMIT=100; $env:PREVIEW_PAGES="all"; node 03-typescript.ts   # 全ページ
 $env:ZIP=1; node 03-typescript.ts                                  # ACR-PNG-PACKAGE形式のzipも作成（同上）
 ```
 
-## open-in-viewer.mjs — 生成したZIPをビューアで開く
+## quickstart-all.mjs — PDF・ZIP生成からビューア表示まで1コマンド
 
-`ZIP=1` で作った `slip-list.zip`(ACR-PNG-PACKAGE)を、ドラッグ&ドロップなしで
-[ACR PNG Viewer](https://github.com/acrossreport/acr-viewer)にそのまま開いて表示します。
-小さなローカルサーバーを立てて、既定のブラウザを自動で開きます
-(`acr-zip-viewer.html` は `acr-slip-list-ja.zip` を展開したときに同じフォルダに入っています)。
+フォルダにある `acr-slip-list-en.*` / `acr-slip-list-ja.*` を自動で見つけて、PDFと
+ZIP(ACR-PNG-PACKAGE)を両方作り、小さなローカルサーバー経由でブラウザを自動で開いて
+ZIPをそのまま表示します(ドラッグ&ドロップ不要)。上記の「準備」が終わっていれば、これ1つで完結します。
+
+```bash
+node quickstart-all.mjs
+```
+
+## open-in-viewer.mjs — 既に作ったZIPをビューアで開く
+
+`slip-list.zip` をすでに持っている場合に、それだけをビューアで開きます
+(`quickstart-all.mjs` はPDF・ZIPの生成からまとめてやりたいときに使ってください)。
 
 ```bash
 node open-in-viewer.mjs                # slip-list.zip を開く
