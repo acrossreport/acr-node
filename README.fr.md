@@ -81,7 +81,7 @@ D'autres exemples — servir des PDF via HTTP avec un rendu concurrent dans des 
 threads, et une version typée utilisant `renderPreview` (un PNG par page),
 `renderPngZip` et `listDataFields` — se trouvent dans [examples/](examples/).
 
-### Licence
+### Activation de la licence
 
 Un rendu sans clé de licence activée produit une sortie avec un filigrane (même politique
 que ACR CLI / ACR Designer / ACR Viewer — voir [LICENSE.txt](LICENSE.txt)). Si une licence

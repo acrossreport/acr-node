@@ -73,7 +73,7 @@ Webサーバからの配信(ワーカースレッドで同時描画)、`renderPr
 `renderPngZip`・`listDataFields`を使う型付き(TypeScript)の例は[examples/](examples/)
 にあります。
 
-### ライセンス
+### ライセンスの有効化
 
 ライセンスキーが未登録の状態で描画すると、出力にウォーターマークが入ります
 （ACR CLI / ACR Designer / ACR Viewerと同じ方針。[LICENSE.txt](LICENSE.txt)参照）。
