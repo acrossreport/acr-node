@@ -13,7 +13,6 @@ import { extname } from "node:path";
 import { exec } from "node:child_process";
 
 const zipName = process.argv[2] || "slip-list.zip";
-const port = Number(process.env.PORT || 8787);
 
 const MIME = { ".html": "text/html; charset=utf-8", ".zip": "application/zip" };
 
@@ -29,7 +28,10 @@ const server = createServer(async (req, res) => {
   }
 });
 
-server.listen(port, () => {
+// Port 0 = let the OS pick a free port, so this never collides with
+// anything else already listening (e.g. a previous run you forgot to close).
+server.listen(Number(process.env.PORT) || 0, "127.0.0.1", () => {
+  const port = server.address().port;
   const url = `http://localhost:${port}/acr-zip-viewer.html?zip=${encodeURIComponent(zipName)}`;
   console.log(`serving . -> ${url}`);
   const opener = process.platform === "win32" ? "start" : process.platform === "darwin" ? "open" : "xdg-open";
