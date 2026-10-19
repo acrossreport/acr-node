@@ -13,7 +13,7 @@ Write-Host "Working in $dir"
 npm init -y | Out-Null
 npm install @acrossreport/acr-node
 
-curl.exe -LO https://github.com/acrossreport/acr-samples/raw/main/acr-slip-list-ja.zip
+curl.exe -LO https://github.com/acrossreport/acr-data-samples/raw/main/acr-slip-list-ja.zip
 tar -xf acr-slip-list-ja.zip
 
 curl.exe -LO https://github.com/acrossreport/acr-node/raw/main/examples/quickstart-all.mjs

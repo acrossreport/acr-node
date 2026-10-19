@@ -55,7 +55,7 @@ irm https://raw.githubusercontent.com/acrossreport/acr-node/main/examples/setup-
 ### Step by step
 
 Quickstart — renders a real sample from
-[acr-samples](https://github.com/acrossreport/acr-samples) to a PDF. Create an empty
+[acr-samples](https://github.com/acrossreport/acr-data-samples) to a PDF. Create an empty
 working folder and move into it first (you'll need to re-run `npm install` here too):
 
 ```bash
@@ -63,7 +63,7 @@ mkdir acr-node-demo
 cd acr-node-demo
 npm init -y
 npm install @acrossreport/acr-node
-curl -LO https://github.com/acrossreport/acr-samples/raw/main/acr-slip-list-en.zip
+curl -LO https://github.com/acrossreport/acr-data-samples/raw/main/acr-slip-list-en.zip
 tar -xf acr-slip-list-en.zip
 ```
 

@@ -53,7 +53,7 @@ irm https://raw.githubusercontent.com/acrossreport/acr-node/main/examples/setup-
 
 ### 手順を1つずつ
 
-まずは[acr-samples](https://github.com/acrossreport/acr-samples)にある実在のテンプレート・
+まずは[acr-samples](https://github.com/acrossreport/acr-data-samples)にある実在のテンプレート・
 データのペアでPDFを作ってみます。空の作業用フォルダを作って移動してから実行してください
 (前述の`npm install`はこのフォルダで改めて実行し直す必要があります):
 
@@ -62,7 +62,7 @@ mkdir acr-node-demo
 cd acr-node-demo
 npm init -y
 npm install @acrossreport/acr-node
-curl -LO https://github.com/acrossreport/acr-samples/raw/main/acr-slip-list-ja.zip
+curl -LO https://github.com/acrossreport/acr-data-samples/raw/main/acr-slip-list-ja.zip
 tar -xf acr-slip-list-ja.zip
 ```
 

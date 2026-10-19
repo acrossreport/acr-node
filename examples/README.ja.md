@@ -2,7 +2,7 @@
 
 [English](README.md) | 日本語
 
-各サンプルはそれぞれ単独で動作します — 必要なものを1つ選んで実行してください(順番に全部実行する必要はありません)。いずれも[acr-samples](https://github.com/acrossreport/acr-samples)の仕入伝票一覧サンプル(12,982行 / 1,394ページ)を描画します。
+各サンプルはそれぞれ単独で動作します — 必要なものを1つ選んで実行してください(順番に全部実行する必要はありません)。いずれも[acr-samples](https://github.com/acrossreport/acr-data-samples)の仕入伝票一覧サンプル(12,982行 / 1,394ページ)を描画します。
 
 ## とにかく1コマンドで試したい場合(Windows)
 
@@ -23,7 +23,7 @@ mkdir acr-node-examples
 cd acr-node-examples
 npm init -y
 npm install @acrossreport/acr-node
-curl -LO https://github.com/acrossreport/acr-samples/raw/main/acr-slip-list-ja.zip
+curl -LO https://github.com/acrossreport/acr-data-samples/raw/main/acr-slip-list-ja.zip
 tar -xf acr-slip-list-ja.zip
 ```
 

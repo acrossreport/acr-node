@@ -4,7 +4,7 @@ English | [日本語](README.ja.md)
 
 Each example is self-contained and runs on its own — pick the one you need, don't
 run them all in sequence. All of them render a sample purchase-slip-list report
-(12,982 rows / 1,394 pages) from [acr-samples](https://github.com/acrossreport/acr-samples).
+(12,982 rows / 1,394 pages) from [acr-samples](https://github.com/acrossreport/acr-data-samples).
 
 ## Just want to try it in one command? (Windows)
 
@@ -26,7 +26,7 @@ mkdir acr-node-examples
 cd acr-node-examples
 npm init -y
 npm install @acrossreport/acr-node
-curl -LO https://github.com/acrossreport/acr-samples/raw/main/acr-slip-list-ja.zip
+curl -LO https://github.com/acrossreport/acr-data-samples/raw/main/acr-slip-list-ja.zip
 tar -xf acr-slip-list-ja.zip
 ```
 
