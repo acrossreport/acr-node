@@ -89,27 +89,6 @@ More examples — serving PDFs over HTTP with worker-thread concurrency so rende
 doesn't block other requests, and a typed version exercising `renderPreview` (PNG per
 page), `renderPngZip`, and `listDataFields` — are in [examples/](examples/).
 
-### Licensing
-
-Rendering without an activated license key produces output with a watermark (same policy
-as ACR CLI / ACR Designer / ACR Viewer — see [LICENSE.txt](LICENSE.txt)). If a license was
-already activated on this machine by one of those tools, `acr-node` picks it up
-automatically; otherwise, activate one directly:
-
-```ts
-import { activate, licenseStatus } from "@acrossreport/acr-node";
-
-console.log(licenseStatus()); // { licensed: false } before activation
-
-await activate("you@example.com", "ACR-XXXX-XXXX-XXXX-XXXX"); // throws on failure
-console.log(licenseStatus()); // { licensed: true, tier: "..." }
-```
-
-`activate()` makes a blocking HTTP request to the license server; call it from a
-background/worker context in Electron if that matters for your app. The resulting
-activation is cached at `%APPDATA%/AcrEngine/license.json` (or the OS equivalent) and
-shared with ACR CLI / ACR Designer / ACR Viewer on the same machine.
-
 ## Platform support
 
 | Platform | Status |
@@ -125,5 +104,4 @@ shared with ACR CLI / ACR Designer / ACR Viewer on the same machine.
 
 See [LICENSE.txt](LICENSE.txt). Binary distribution; source is not published. Free to use
 and to embed in your own Node.js/Electron application, including distributing that
-application to your own end users. Rendering without an activated license key adds a
-watermark to the output.
+application to your own end users.

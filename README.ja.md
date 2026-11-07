@@ -86,27 +86,6 @@ Webサーバからの配信(ワーカースレッドで同時描画)、`renderPr
 `renderPngZip`・`listDataFields`を使う型付き(TypeScript)の例は[examples/](examples/)
 にあります。
 
-### ライセンスの有効化
-
-ライセンスキーが未登録の状態で描画すると、出力にウォーターマークが入ります
-（ACR CLI / ACR Designer / ACR Viewerと同じ方針。[LICENSE.txt](LICENSE.txt)参照）。
-同じマシンでこれらのツールのいずれかが既にアクティベート済みであれば、`acr-node`は
-自動的にそのライセンスを使います。未登録の場合は直接アクティベートできます。
-
-```ts
-import { activate, licenseStatus } from "@acrossreport/acr-node";
-
-console.log(licenseStatus()); // アクティベート前は { licensed: false }
-
-await activate("you@example.com", "ACR-XXXX-XXXX-XXXX-XXXX"); // 失敗時は例外
-console.log(licenseStatus()); // { licensed: true, tier: "..." }
-```
-
-`activate()`はライセンスサーバーへの同期HTTPリクエストを行います。Electronアプリで
-ブロッキングが問題になる場合は、バックグラウンド/ワーカー側から呼び出してください。
-アクティベーション結果は`%APPDATA%/AcrEngine/license.json`（またはOS相当の場所）に
-キャッシュされ、同じマシン上のACR CLI / ACR Designer / ACR Viewerとも共有されます。
-
 ## 対応プラットフォーム
 
 | プラットフォーム | 状況 |
@@ -122,5 +101,4 @@ console.log(licenseStatus()); // { licensed: true, tier: "..." }
 
 [LICENSE.txt](LICENSE.txt)をご覧ください。バイナリ配布で、ソースは非公開です。
 無償で利用でき、あなた自身のNode.js/Electronアプリケーションに組み込んで、そのアプリを
-エンドユーザーへ配布することも可能です。ライセンスキー未登録での描画には、出力に
-ウォーターマークが入ります。
+エンドユーザーへ配布することも可能です。

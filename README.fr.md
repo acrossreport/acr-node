@@ -96,28 +96,6 @@ D'autres exemples — servir des PDF via HTTP avec un rendu concurrent dans des 
 threads, et une version typée utilisant `renderPreview` (un PNG par page),
 `renderPngZip` et `listDataFields` — se trouvent dans [examples/](examples/).
 
-### Activation de la licence
-
-Un rendu sans clé de licence activée produit une sortie avec un filigrane (même politique
-que ACR CLI / ACR Designer / ACR Viewer — voir [LICENSE.txt](LICENSE.txt)). Si une licence
-a déjà été activée sur cette machine par l'un de ces outils, `acr-node` la reprend
-automatiquement ; sinon, activez-en une directement :
-
-```ts
-import { activate, licenseStatus } from "@acrossreport/acr-node";
-
-console.log(licenseStatus()); // { licensed: false } avant activation
-
-await activate("you@example.com", "ACR-XXXX-XXXX-XXXX-XXXX"); // lève une erreur en cas d'échec
-console.log(licenseStatus()); // { licensed: true, tier: "..." }
-```
-
-`activate()` effectue une requête HTTP bloquante vers le serveur de licences ; appelez-la
-depuis un contexte d'arrière-plan/worker dans Electron si cela importe pour votre
-application. Le résultat de l'activation est mis en cache dans
-`%APPDATA%/AcrEngine/license.json` (ou l'équivalent du système d'exploitation) et partagé
-avec ACR CLI / ACR Designer / ACR Viewer sur la même machine.
-
 ## Plateformes prises en charge
 
 | Plateforme | Statut |
@@ -133,5 +111,4 @@ avec ACR CLI / ACR Designer / ACR Viewer sur la même machine.
 
 Voir [LICENSE.txt](LICENSE.txt). Distribution binaire ; le code source n'est pas publié.
 Utilisation gratuite, y compris l'intégration dans votre propre application Node.js/
-Electron et sa distribution à vos propres utilisateurs finaux. Un rendu sans clé de
-licence activée ajoute un filigrane à la sortie.
+Electron et sa distribution à vos propres utilisateurs finaux.

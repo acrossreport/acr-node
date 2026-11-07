@@ -10,7 +10,7 @@ import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 import { extname } from "node:path";
 import { exec } from "node:child_process";
-import { renderPdf, renderPngZip, licenseStatus } from "@acrossreport/acr-node";
+import { renderPdf, renderPngZip } from "@acrossreport/acr-node";
 
 const templateFile = readdirSync(".").find((f) => /^acr-slip-list-\w+\.template\.json$/.test(f));
 if (!templateFile) {
@@ -25,7 +25,6 @@ const data = readFileSync(dataFile, "utf8");
 
 const pages = renderPdf(template, data, "slip-list.pdf");
 console.log(`slip-list.pdf (${pages} pages)`);
-if (!licenseStatus().licensed) console.log("(no license key activated -> output is watermarked)");
 
 renderPngZip(template, data, "slip-list.zip", "0.5.0");
 console.log("slip-list.zip");

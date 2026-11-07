@@ -238,11 +238,9 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { renderPreview, renderPdf, renderPngZip, listDataFields, licenseStatus, activate } = nativeBinding
+const { renderPreview, renderPdf, renderPngZip, listDataFields } = nativeBinding
 
 module.exports.renderPreview = renderPreview
 module.exports.renderPdf = renderPdf
 module.exports.renderPngZip = renderPngZip
 module.exports.listDataFields = listDataFields
-module.exports.licenseStatus = licenseStatus
-module.exports.activate = activate

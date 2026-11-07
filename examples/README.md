@@ -68,8 +68,8 @@ curl http://localhost:3000/health     # responds immediately, even mid-render
 ## 03-typescript.ts
 
 The same workflow as 01, but typed and exercising more of the API in one script:
-`licenseStatus`, `listDataFields`, `renderPreview` (PNG per page), `renderPdf`, and
-optionally `renderPngZip`. Useful as a reference for the full surface of the package.
+`listDataFields`, `renderPreview` (PNG per page), `renderPdf`, and optionally
+`renderPngZip`. Useful as a reference for the full surface of the package.
 
 Needs Node.js 22.18+ / 23.6+ to run `.ts` files directly; on an older Node, run it
 through [tsx](https://github.com/privatenumber/tsx) instead:
@@ -108,8 +108,3 @@ node open-in-viewer.mjs                # opens slip-list.zip
 node open-in-viewer.mjs other-name.zip  # opens a differently-named zip
 ```
 
-## Licensing
-
-All three examples work without a license key — output just carries a watermark.
-See the [Licensing section](../README.md#licensing) of the main README for how to
-activate a key.

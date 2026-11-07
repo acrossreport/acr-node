@@ -6,7 +6,7 @@
 //         LIMIT=50 node 01-quickstart.mjs   （先頭 50 行だけで試す。macOS/Linux/Git Bash）
 //         $env:LIMIT=50; node 01-quickstart.mjs   （同上。Windows PowerShell）
 import { readFileSync } from "node:fs";
-import { renderPdf, licenseStatus } from "@acrossreport/acr-node";
+import { renderPdf } from "@acrossreport/acr-node";
 
 // 1) 帳票の定義（ACR Designer で作るファイル）
 const template = readFileSync("acr-slip-list-ja.template.json", "utf8");
@@ -21,4 +21,3 @@ const pages = renderPdf(template, JSON.stringify(data), "slip-list.pdf");
 const ms = Math.round(performance.now() - t0);
 
 console.log(`データ ${data.Parameters.Data.length} 行 → slip-list.pdf（${pages} ページ、${ms} ms）`);
-if (!licenseStatus().licensed) console.log("※ ライセンス未登録のため、PDF には透かしが入っています");

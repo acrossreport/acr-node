@@ -56,7 +56,7 @@ curl http://localhost:3000/health     # 描画中でもすぐ返る
 
 ## 03-typescript.ts
 
-01と同じ処理をTypeScriptで書き、`licenseStatus`・`listDataFields`・`renderPreview`(ページごとのPNG)・`renderPdf`・(任意で)`renderPngZip` と、APIの広い範囲を1本で確認できるようにしたものです。パッケージ全体の使い方のリファレンスとしても使えます。
+01と同じ処理をTypeScriptで書き、`listDataFields`・`renderPreview`(ページごとのPNG)・`renderPdf`・(任意で)`renderPngZip` と、APIの広い範囲を1本で確認できるようにしたものです。パッケージ全体の使い方のリファレンスとしても使えます。
 
 `.ts` ファイルを直接実行するには Node.js 22.18以降 / 23.6以降が必要です。それより古いNodeでは [tsx](https://github.com/privatenumber/tsx) を使ってください。
 
@@ -93,6 +93,3 @@ node open-in-viewer.mjs                # slip-list.zip を開く
 node open-in-viewer.mjs other-name.zip # 別名のZIPを開く
 ```
 
-## ライセンス
-
-3つのサンプルとも、ライセンスキーなしでそのまま動作します(出力に透かしが入るだけです)。キーの登録方法はメインREADMEの[ライセンスの節](../README.ja.md#ライセンスの有効化)を参照してください。

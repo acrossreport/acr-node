@@ -11,11 +11,6 @@ export interface PageImage {
   png: Buffer
 }
 
-export interface LicenseInfo {
-  licensed: boolean
-  tier?: string
-}
-
 /**
  * Template JSON + data JSON -> one PNG image per page (96dpi, for on-screen preview).
  * An empty data JSON is treated as no rows ({"Parameters":{"Data":[]}}).
@@ -37,14 +32,3 @@ export function renderPngZip(templateJson: string, dataJson: string, outputPath:
  * Template JSON -> JSON string listing DataField names used in it and where each is used.
  */
 export function listDataFields(templateJson: string): string
-
-/**
- * Current license status, read from the local cache (no network call).
- */
-export function licenseStatus(): LicenseInfo
-
-/**
- * Activates a license key against the ACR license server and caches the result
- * locally. Returns the license tier on success.
- */
-export function activate(email: string, key: string): string

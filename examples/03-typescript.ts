@@ -5,7 +5,6 @@ import {
   renderPdf,
   renderPngZip,
   listDataFields,
-  licenseStatus,
 } from "@acrossreport/acr-node";
 
 interface SlipData {
@@ -26,7 +25,6 @@ if (limit > 0) {
 }
 const dataJson = JSON.stringify(data);
 
-console.log("license:", licenseStatus());
 const fields = JSON.parse(listDataFields(templateJson)) as unknown[];
 console.log("fields count:", fields.length);
 
