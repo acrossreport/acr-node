@@ -12,16 +12,9 @@ https://github.com/acrossreport/acr-node and the npm registry.
    inside your own Node.js or Electron application and distributing that
    application (with the Software bundled inside it) to your own end users.
 
-2. Watermark and License Key
-   A valid license key must be registered on the machine running the
-   Software before calling its rendering functions (via the Software's
-   activate() API, or by reusing an existing ACR license already registered
-   on that machine by ACR CLI, ACR Designer, or ACR Viewer). PDF/PNG output
-   produced before registration, or on a machine with no valid license,
-   includes a watermark.
-   One license key can be registered on up to three (3) computers.
-   Re-registering on the same computer does not count toward this limit.
-   To register additional computers, please apply to support by email.
+2. Output
+   All output (PDF/PNG) produced by the Software is free of charge and
+   free of any watermark.
 
 3. Redistribution
    You may not redistribute the Software by itself, or repackage it as a
@@ -34,13 +27,11 @@ https://github.com/acrossreport/acr-node and the npm registry.
    organization.
    Copying the Software for installation on multiple computers within your
    own organization is permitted.
-   A license key may not be transferred or shared with any third party.
 
 4. Restrictions
    You may not:
    - reverse engineer, decompile, or disassemble the Software;
-   - modify the Software, or remove or alter the watermark by any means
-     other than registering a valid license key;
+   - modify the Software;
    - remove or alter copyright notices included in the Software.
 
 5. Source Code
@@ -87,15 +78,9 @@ Copyright (c) Across Systems Corporation. All rights reserved.
    して組み込み、そのアプリケーション（本ソフトウェアを内包した状態）を
    あなたのエンドユーザーへ配布することも含みます。
 
-2. ウォーターマークとライセンスキー
-   本ソフトウェアの描画関数を呼び出す前に、実行マシン上で有効なライセンス
-   キーの登録が必要です（本ソフトウェアのactivate() APIによる登録、また
-   はACR CLI/ACR Designer/ACR Viewerが同じマシンに既に登録済みのライセン
-   スの再利用のいずれか）。登録前、または有効なライセンスのないマシンで
-   生成したPDF/PNG出力には、ウォーターマークが入ります。
-   1つのライセンスキーで登録できるコンピュータは3台までです。
-   同じコンピュータでの再登録は台数に数えません。
-   追加の登録が必要な場合は、サポートまでメールでご申請ください。
+2. 出力
+   本ソフトウェアが生成するすべての出力（PDF/PNG）は無償で、ウォーター
+   マークは入りません。
 
 3. 再配布
    本ソフトウェア単体、または本ソフトウェアのAPIを主目的として再パッケー
@@ -105,12 +90,10 @@ Copyright (c) Across Systems Corporation. All rights reserved.
    ではない組み込み依存として内包する形での再配布は、組織外のエンドユー
    ザーへの配布も含めて許可します。
    自組織内の複数のコンピュータへ設置するためのコピーは認めます。
-   ライセンスキーを第三者へ譲渡・共有することはできません。
 
 4. 禁止事項
    - 本ソフトウェアのリバースエンジニアリング、逆コンパイル、逆アセンブル
-   - 本ソフトウェアの改変、および有効なライセンスキーの登録以外の方法に
-     よるウォーターマークの除去・改変
+   - 本ソフトウェアの改変
    - 本ソフトウェアに含まれる著作権表示の削除・改変
 
 5. ソースコード
